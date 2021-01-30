@@ -27,10 +27,10 @@ public class stick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BannerYokEt = false;
-        MobileAds.Initialize(App_ID);
-        RequestInterstitial();
-        RequestBanner();
+        //BannerYokEt = false;
+        //MobileAds.Initialize(App_ID);
+        //RequestInterstitial();
+        //RequestBanner();
         if (SceneManager.GetActiveScene().buildIndex == 17)
         {
             reverse = 1;
@@ -176,38 +176,38 @@ public class stick : MonoBehaviour
                 transform.Rotate(Vector3.back * speed * Time.deltaTime);
                 vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
             }
-            //if (Input.GetMouseButton(0))
-            //{
-            //    if (reverse ==0)
-            //    {
-            //        if (Input.mousePosition.x < Screen.width / 2)
-            //        {
-            //            transform.Rotate(-Vector3.back * speed * Time.deltaTime);
-            //            vucut.transform.Rotate(-Vector3.back * speed * Time.deltaTime);
+            if (Input.GetMouseButton(0))
+            {
+                if (reverse == 0)
+                {
+                    if (Input.mousePosition.x < Screen.width / 2)
+                    {
+                        transform.Rotate(-Vector3.back * speed * Time.deltaTime);
+                        vucut.transform.Rotate(-Vector3.back * speed * Time.deltaTime);
 
-            //        }
-            //        else if (Input.mousePosition.x > Screen.width / 2)
-            //        {
-            //            transform.Rotate(Vector3.back * speed * Time.deltaTime);
-            //            vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
+                    }
+                    else if (Input.mousePosition.x > Screen.width / 2)
+                    {
+                        transform.Rotate(Vector3.back * speed * Time.deltaTime);
+                        vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
 
-            //        }
-            //    }
-            //    else if (reverse==1)
-            //    {
-            //        if (Input.mousePosition.x < Screen.width / 2)
-            //        {
-            //            transform.Rotate(Vector3.back * speed * Time.deltaTime);
-            //            vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
-            //        }
-            //        else if (Input.mousePosition.x > Screen.width / 2)
-            //        {
-            //            transform.Rotate(-Vector3.back * speed * Time.deltaTime);
-            //            vucut.transform.Rotate(-Vector3.back * speed * Time.deltaTime);
-            //        }
-            //    }
+                    }
+                }
+                else if (reverse == 1)
+                {
+                    if (Input.mousePosition.x < Screen.width / 2)
+                    {
+                        transform.Rotate(Vector3.back * speed * Time.deltaTime);
+                        vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
+                    }
+                    else if (Input.mousePosition.x > Screen.width / 2)
+                    {
+                        transform.Rotate(-Vector3.back * speed * Time.deltaTime);
+                        vucut.transform.Rotate(-Vector3.back * speed * Time.deltaTime);
+                    }
+                }
 
-            //}
+            }
 
         }
 

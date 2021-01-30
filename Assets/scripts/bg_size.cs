@@ -30,7 +30,7 @@ public class bg_size : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.gameObject.transform.position = Vector3.zero;
         collision.gameObject.GetComponent<stick>().olumSayisi += 1;
         
