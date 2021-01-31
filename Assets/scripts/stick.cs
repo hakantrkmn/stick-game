@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class stick : MonoBehaviour
 {
+
     public bool BannerYokEt = false;
     public int olumSayisi = 0;
     private Rigidbody2D rb;
     public int speed;
-    public float speed2;
-    public GameObject win_yazisi;
     public int reverse;
     public GameObject vucut;
+    public float yAxisVeloLimit;
 
     string App_ID = "ca-app-pub-4036017402303426~5272198352";
     string interstitial_Ad_ID = "ca-app-pub-4036017402303426/8956809416";
@@ -22,15 +22,17 @@ public class stick : MonoBehaviour
     private InterstitialAd interstitial;
     private BannerView bannerView;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
+        yAxisVeloLimit = -7;
+        //reklamı oluştur gösterilmesi için beklet
+
         //BannerYokEt = false;
         //MobileAds.Initialize(App_ID);
         //RequestInterstitial();
         //RequestBanner();
+
+        //level 17 ise kontrolu  ters çevirecek değişkeni 1 yap
         if (SceneManager.GetActiveScene().buildIndex == 17)
         {
             reverse = 1;
@@ -40,12 +42,15 @@ public class stick : MonoBehaviour
             reverse = 0;
         }
 
+        //level 18 ise gravity terse çevir
         if (SceneManager.GetActiveScene().buildIndex == 18)
         {
             gameObject.GetComponent<Rigidbody2D>().gravityScale = -1;
 
         }
+        
         rb = GetComponent<Rigidbody2D>();
+        //çubuğun dönme hızı
         speed = 150;
         StartCoroutine(bannerShow());
     }
@@ -53,17 +58,12 @@ public class stick : MonoBehaviour
 
     public void RequestBanner()
     {
-        // Create a 320x50 banner at the top of the screen.
         this.bannerView = new BannerView(banner_Ad_ID, AdSize.Banner, AdPosition.Top);
-
     }
 
     public void ShowBannerAD()
     {
-        // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
-
-        // Load the banner with the request.
         this.bannerView.LoadAd(request);
     }
 
@@ -73,15 +73,10 @@ public class stick : MonoBehaviour
         ShowBannerAD();
     }
 
-
     public void RequestInterstitial()
     {
-        // Initialize an InterstitialAd.
         this.interstitial = new InterstitialAd(interstitial_Ad_ID);
-
         this.interstitial.LoadAd(this.CreateAdRequest());
-
-
     }
 
     private AdRequest CreateAdRequest()
@@ -91,51 +86,55 @@ public class stick : MonoBehaviour
 
     public void showIad()
     {
-
         if (this.interstitial.IsLoaded())
         {
             this.interstitial.Show();
         }
     }
+
+    //sağ üstteki çarpı tuşunun menuye gönderme işlemi
     public void menu()
     {
         destroyBanner();
         SceneManager.LoadScene("menu");
     }
-    // Update is called once per frame
+
     void Update()
     {
-        Debug.Log(BannerYokEt);
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.y<yAxisVeloLimit )
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x,yAxisVeloLimit);
+        }
+
         if (BannerYokEt==true)
         {
             destroyBanner();
             BannerYokEt = false;
         }
-        Debug.Log(olumSayisi);
+        //6 kere ölünmüşse reklamı göster
         if (olumSayisi == 6)
         {
             olumSayisi = 0;
             showIad();
             RequestInterstitial();
-
         }
-        //var x = Mathf.Clamp(transform.position.x, -Camera.main.orthographicSize / 2 + 0.4f, Camera.main.orthographicSize / 2 - 0.4f);
+        //oyuncu bölge sınırlama
         if (transform.position.x<-3.5f)
         {
             transform.position = new Vector3(-3.5f, transform.position.y, transform.position.z);
         }
 
-        if (SceneManager.GetActiveScene().buildIndex>4)
+        //oyuncu y bölge sınırlama
+        if (transform.position.y<-10)
         {
-            if (transform.position.y<-10)
-            {
-                olumSayisi += 1;
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                transform.position = Vector3.zero;
-                Vector3 eulerRotation = transform.rotation.eulerAngles;
-                transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 90);
-            }
+            olumSayisi += 1;
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            transform.position = Vector3.zero;
+            Vector3 eulerRotation = transform.rotation.eulerAngles;
+            transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 90);
         }
+        
+        //18. level ters olduğu için y  bölge sınırlama
         if (SceneManager.GetActiveScene().buildIndex == 18)
         {
             if (transform.position.y > 33)
@@ -146,25 +145,8 @@ public class stick : MonoBehaviour
                 transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 90);
             }
         }
-        //transform.position = new Vector3(x, transform.position.y, transform.position.z);
+        //çubuğun dönme ivmesini sıfırlama
         rb.angularVelocity = 0;
-
-
-        //if (rb.velocity.magnitude < 8)
-        //{
-        //    if (Input.GetKey(KeyCode.A))
-        //    {
-        //        transform.Rotate(-Vector3.back * speed * Time.deltaTime);
-        //    }
-        //    if (Input.GetKey(KeyCode.D))
-        //    {
-
-        //        transform.Rotate(Vector3.back * speed * Time.deltaTime);
-        //    }
-        //}
-
-        if (rb.velocity.magnitude < 10)
-        {
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -184,13 +166,11 @@ public class stick : MonoBehaviour
                     {
                         transform.Rotate(-Vector3.back * speed * Time.deltaTime);
                         vucut.transform.Rotate(-Vector3.back * speed * Time.deltaTime);
-
                     }
                     else if (Input.mousePosition.x > Screen.width / 2)
                     {
                         transform.Rotate(Vector3.back * speed * Time.deltaTime);
                         vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
-
                     }
                 }
                 else if (reverse == 1)
@@ -206,22 +186,18 @@ public class stick : MonoBehaviour
                         vucut.transform.Rotate(-Vector3.back * speed * Time.deltaTime);
                     }
                 }
-
             }
-
         }
-
-        
-
-    }
+    
 
     public void destroyBanner()
     {
         bannerView.Destroy();
     }
+
+    //cubuğa bişe değerse
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.tag=="portal")
         {
             destroyBanner();
@@ -265,11 +241,5 @@ public class stick : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         gameObject.GetComponent<AudioSource>().Play();
-
-        if (collision.gameObject.tag == "love")
-        {
-            win_yazisi.SetActive(true);
-            Time.timeScale = 0;
-        }
     }
 }
