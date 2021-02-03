@@ -1,67 +1,19 @@
 fileFormatVersion: 2
-guid: 11aeee337e4d5ce4f84d3996e73c89b1
+guid: 3f980afb6b453ab40b9313514f71f023
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4451806321468291538
-    second: grass_4_0
+      213: 5886937781353412289
+    second: sasa_0
   - first:
-      213: -2984958720952273631
-    second: grass_4_1
+      213: 8472698421046874628
+    second: sasa_1
   - first:
-      213: 1222646757842390239
-    second: grass_4_2
+      213: -7416778453048591208
+    second: sasa_2
   - first:
-      213: -6085870085941342122
-    second: grass_4_3
-  - first:
-      213: 5499608706719353880
-    second: grass_4_4
-  - first:
-      213: 7212796530086493632
-    second: grass_4_5
-  - first:
-      213: -8441198190031512805
-    second: grass_4_6
-  - first:
-      213: -481293076769507823
-    second: grass_4_7
-  - first:
-      213: 6980079518931093055
-    second: grass_4_8
-  - first:
-      213: -5393210559816116003
-    second: grass_4_9
-  - first:
-      213: -5466439639658983988
-    second: grass_4_10
-  - first:
-      213: -2934888237097638148
-    second: grass_4_11
-  - first:
-      213: -6227372944366746517
-    second: grass_4_12
-  - first:
-      213: 2651837687915207244
-    second: grass_4_13
-  - first:
-      213: -7347777606376828461
-    second: grass_4_14
-  - first:
-      213: -5028046566287857515
-    second: grass_4_15
-  - first:
-      213: 5201127324878638031
-    second: grass_4_16
-  - first:
-      213: 6594757854815138960
-    second: grass_4_17
-  - first:
-      213: 3889897979171533513
-    second: grass_4_18
-  - first:
-      213: 7406644486010940453
-    second: grass_4_19
+      213: -7364999398456617550
+    second: sasa_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -159,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grass_4_0
+      name: sasa_0
       rect:
         serializedVersion: 2
         x: 0
@@ -173,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d9b4ff334ef7cd30800000000000000
-      internalID: 4451806321468291538
+      spriteID: 1c67568c8ba92b150800000000000000
+      internalID: 5886937781353412289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_4_1
+      name: sasa_1
       rect:
         serializedVersion: 2
         x: 64
@@ -194,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1257f68bbdb4396d0800000000000000
-      internalID: -2984958720952273631
+      spriteID: 402138bd252159570800000000000000
+      internalID: 8472698421046874628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_4_2
+      name: sasa_2
       rect:
         serializedVersion: 2
         x: 128
@@ -215,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdc8af69fb6b7f010800000000000000
-      internalID: 1222646757842390239
+      spriteID: 89c7440fa4f421990800000000000000
+      internalID: -7416778453048591208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_4_3
+      name: sasa_3
       rect:
         serializedVersion: 2
         x: 192
@@ -236,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6505a42b665aa8ba0800000000000000
-      internalID: -6085870085941342122
+      spriteID: 2b5170c81144ac990800000000000000
+      internalID: -7364999398456617550
       vertices: []
       indices: 
       edges: []

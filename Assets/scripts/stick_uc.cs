@@ -10,11 +10,12 @@ public class stick_uc : MonoBehaviour
     public Animator boyAnim;
     public float jumpForce;
     public Vector3 hitPoint;
-
+    public float sonVelo;
 
     void Start()
     {
-        jumpForce = 1200f;
+        sonVelo = 0.15f;
+        jumpForce = 1000f;
     }
 
     void Update()
@@ -103,7 +104,8 @@ public class stick_uc : MonoBehaviour
             {
                 return;
             }
-            rb.velocity = rb.velocity * 0.1f;
+            rb.velocity = rb.velocity * sonVelo;
+            rb.velocity = new Vector2(rb.velocity.x,0);
             if (SceneManager.GetActiveScene().buildIndex == 18)
             {
                 rb.AddForce(new Vector2(-(float)test.x, (float)test.y) * -1 * jumpForce);

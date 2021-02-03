@@ -24,7 +24,7 @@ public class stick : MonoBehaviour
 
     void Start()
     {
-        yAxisVeloLimit = -7;
+        yAxisVeloLimit = -10;
         //reklamı oluştur gösterilmesi için beklet
 
         //BannerYokEt = false;
@@ -147,7 +147,8 @@ public class stick : MonoBehaviour
         }
         //çubuğun dönme ivmesini sıfırlama
         rb.angularVelocity = 0;
-
+        if (reverse==0)
+        {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Rotate(-Vector3.back * speed * Time.deltaTime);
@@ -158,6 +159,22 @@ public class stick : MonoBehaviour
                 transform.Rotate(Vector3.back * speed * Time.deltaTime);
                 vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
             }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Rotate(Vector3.back * speed * Time.deltaTime);
+                vucut.transform.Rotate(Vector3.back * speed * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Rotate(-Vector3.back * speed * Time.deltaTime);
+                vucut.transform.Rotate(-Vector3.back * speed * Time.deltaTime);
+
+            }
+        }
+            
             if (Input.GetMouseButton(0))
             {
                 if (reverse == 0)

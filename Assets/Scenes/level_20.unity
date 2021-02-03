@@ -1141,7 +1141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 11aeee337e4d5ce4f84d3996e73c89b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cac3f863477f1b3459953b95404c087f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2839,6 +2839,7 @@ MonoBehaviour:
   boyAnim: {fileID: 694285541}
   jumpForce: 0
   hitPoint: {x: 0, y: 0, z: 0}
+  sonVelo: 0
 --- !u!212 &949042668
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3063,6 +3064,7 @@ MonoBehaviour:
   boyAnim: {fileID: 694285541}
   jumpForce: 0
   hitPoint: {x: 0, y: 0, z: 0}
+  sonVelo: 0
 --- !u!212 &965431962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4575,7 +4577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1691383784
 Animator:
   serializedVersion: 3

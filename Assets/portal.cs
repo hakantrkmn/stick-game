@@ -29,9 +29,9 @@ public class portal : MonoBehaviour
 
         PlayerPrefs.SetFloat("level" + SceneManager.GetActiveScene().buildIndex, 1);
         PlayerPrefs.SetFloat("level" + (SceneManager.GetActiveScene().buildIndex + 1), 1);
-        collision.gameObject.SetActive(false);
+        GameObject.Find("cbk").gameObject.SetActive(false);
         GameObject.Find("vucut").gameObject.SetActive(false);
-        GameObject.Find("cbk").GetComponent<stick>().BannerYokEt = true;
+        //GameObject.Find("cbk").GetComponent<stick>().BannerYokEt = true;
         GameObject.Find("Image").GetComponent<Animator>().SetBool("next_level", true);
         StartCoroutine(loadScene());
     }
