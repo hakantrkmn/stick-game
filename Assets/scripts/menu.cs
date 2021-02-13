@@ -18,7 +18,7 @@ public class menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerPrefs.SetInt("UnitySelectMonitor", 0);
         if (PlayerPrefs.GetFloat("sound")==0)
         {
             muteButton.sprite = mutesound;

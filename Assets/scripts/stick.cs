@@ -1,4 +1,4 @@
-﻿using GoogleMobileAds.Api;
+﻿//using GoogleMobileAds.Api;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,17 +15,17 @@ public class stick : MonoBehaviour
     public GameObject vucut;
     public float yAxisVeloLimit;
 
-    string App_ID = "ca-app-pub-4036017402303426~5272198352";
-    string interstitial_Ad_ID = "ca-app-pub-4036017402303426/8956809416";
-    string banner_Ad_ID = "ca-app-pub-4036017402303426/1389050822";
+    //string App_ID = "ca-app-pub-4036017402303426~5272198352";
+    //string interstitial_Ad_ID = "ca-app-pub-4036017402303426/8956809416";
+    //string banner_Ad_ID = "ca-app-pub-4036017402303426/1389050822";
 
-    private InterstitialAd interstitial;
-    private BannerView bannerView;
+    //private InterstitialAd interstitial;
+    //private BannerView bannerView;
 
     void Start()
     {
         yAxisVeloLimit = -10;
-        //reklamı oluştur gösterilmesi için beklet
+        ////reklamı oluştur gösterilmesi için beklet
 
         //BannerYokEt = false;
         //MobileAds.Initialize(App_ID);
@@ -52,50 +52,50 @@ public class stick : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //çubuğun dönme hızı
         speed = 150;
-        StartCoroutine(bannerShow());
+        //StartCoroutine(bannerShow());
     }
 
 
-    public void RequestBanner()
-    {
-        this.bannerView = new BannerView(banner_Ad_ID, AdSize.Banner, AdPosition.Top);
-    }
+    //public void RequestBanner()
+    //{
+    //    this.bannerView = new BannerView(banner_Ad_ID, AdSize.Banner, AdPosition.Top);
+    //}
 
-    public void ShowBannerAD()
-    {
-        AdRequest request = new AdRequest.Builder().Build();
-        this.bannerView.LoadAd(request);
-    }
+    //public void ShowBannerAD()
+    //{
+    //    AdRequest request = new AdRequest.Builder().Build();
+    //    this.bannerView.LoadAd(request);
+    //}
 
-    IEnumerator bannerShow()
-    {
-        yield return new WaitForSeconds(2);
-        ShowBannerAD();
-    }
+    //IEnumerator bannerShow()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    ShowBannerAD();
+    //}
 
-    public void RequestInterstitial()
-    {
-        this.interstitial = new InterstitialAd(interstitial_Ad_ID);
-        this.interstitial.LoadAd(this.CreateAdRequest());
-    }
+    //public void RequestInterstitial()
+    //{
+    //    this.interstitial = new InterstitialAd(interstitial_Ad_ID);
+    //    this.interstitial.LoadAd(this.CreateAdRequest());
+    //}
 
-    private AdRequest CreateAdRequest()
-    {
-        return new AdRequest.Builder().Build();
-    }
+    //private AdRequest CreateAdRequest()
+    //{
+    //    return new AdRequest.Builder().Build();
+    //}
 
-    public void showIad()
-    {
-        if (this.interstitial.IsLoaded())
-        {
-            this.interstitial.Show();
-        }
-    }
+    //public void showIad()
+    //{
+    //    if (this.interstitial.IsLoaded())
+    //    {
+    //        this.interstitial.Show();
+    //    }
+    //}
 
     //sağ üstteki çarpı tuşunun menuye gönderme işlemi
     public void menu()
     {
-        destroyBanner();
+        //destroyBanner();
         SceneManager.LoadScene("menu");
     }
 
@@ -108,15 +108,15 @@ public class stick : MonoBehaviour
 
         if (BannerYokEt==true)
         {
-            destroyBanner();
+            //destroyBanner();
             BannerYokEt = false;
         }
         //6 kere ölünmüşse reklamı göster
         if (olumSayisi == 6)
         {
             olumSayisi = 0;
-            showIad();
-            RequestInterstitial();
+            //showIad();
+            //RequestInterstitial();
         }
         //oyuncu bölge sınırlama
         if (transform.position.x<-3.5f)
@@ -207,17 +207,17 @@ public class stick : MonoBehaviour
         }
     
 
-    public void destroyBanner()
-    {
-        bannerView.Destroy();
-    }
+    //public void destroyBanner()
+    //{
+    //    bannerView.Destroy();
+    //}
 
     //cubuğa bişe değerse
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag=="portal")
         {
-            destroyBanner();
+            //destroyBanner();
         }
         if (SceneManager.GetActiveScene().buildIndex==17)
         {

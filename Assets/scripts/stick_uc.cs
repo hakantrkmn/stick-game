@@ -105,7 +105,7 @@ public class stick_uc : MonoBehaviour
                 return;
             }
             rb.velocity = rb.velocity * sonVelo;
-            rb.velocity = new Vector2(rb.velocity.x,0);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.2f);
             if (SceneManager.GetActiveScene().buildIndex == 18)
             {
                 rb.AddForce(new Vector2(-(float)test.x, (float)test.y) * -1 * jumpForce);
