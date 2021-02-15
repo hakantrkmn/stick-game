@@ -2997,6 +2997,7 @@ MonoBehaviour:
   reverse: 0
   vucut: {fileID: 1321635285}
   yAxisVeloLimit: 0
+  deathCount: 0
 --- !u!212 &1680189696
 SpriteRenderer:
   m_ObjectHideFlags: 0

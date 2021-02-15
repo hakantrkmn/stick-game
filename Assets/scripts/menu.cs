@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class menu : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class menu : MonoBehaviour
     public Image muteButton;
     public Sprite sound;
     public Sprite mutesound;
+    public TextMeshProUGUI death;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("UnitySelectMonitor", 0);
+        death.text = "you died "+PlayerPrefs.GetInt("death")+" times";
         if (PlayerPrefs.GetFloat("sound")==0)
         {
             muteButton.sprite = mutesound;

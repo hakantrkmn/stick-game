@@ -15,12 +15,21 @@ public class stick : MonoBehaviour
     public GameObject vucut;
     public float yAxisVeloLimit;
 
+    public int deathCount;
+
     //string App_ID = "ca-app-pub-4036017402303426~5272198352";
     //string interstitial_Ad_ID = "ca-app-pub-4036017402303426/8956809416";
     //string banner_Ad_ID = "ca-app-pub-4036017402303426/1389050822";
 
     //private InterstitialAd interstitial;
     //private BannerView bannerView;
+    public int target = 30;
+
+    void Awake()
+    {
+        Application.targetFrameRate = target;
+    }
+
 
     void Start()
     {
@@ -51,7 +60,7 @@ public class stick : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         //çubuğun dönme hızı
-        speed = 150;
+        speed = 200;
         //StartCoroutine(bannerShow());
     }
 
@@ -101,6 +110,8 @@ public class stick : MonoBehaviour
 
     void Update()
     {
+        if (Application.targetFrameRate != target)
+            Application.targetFrameRate = target;
         if (gameObject.GetComponent<Rigidbody2D>().velocity.y<yAxisVeloLimit )
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x,yAxisVeloLimit);
@@ -128,6 +139,7 @@ public class stick : MonoBehaviour
         if (transform.position.y<-10)
         {
             olumSayisi += 1;
+            PlayerPrefs.SetInt("death", PlayerPrefs.GetInt("death")+1);
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             transform.position = Vector3.zero;
             Vector3 eulerRotation = transform.rotation.eulerAngles;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class stick_uc : MonoBehaviour
 {
     public GameObject cubuk;
@@ -12,9 +13,10 @@ public class stick_uc : MonoBehaviour
     public Vector3 hitPoint;
     public float sonVelo;
 
+
     void Start()
     {
-        sonVelo = 0.15f;
+        sonVelo = 0.3f;
         jumpForce = 1000f;
     }
 
@@ -64,12 +66,6 @@ public class stick_uc : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //oyuncu yan kenarlara çarparsa zıplama animasyonunu oynatma
-        if (collision.contacts[0].normal.x !=0)
-        {
-
-        }
-        else
-        {
             if (gameObject.name == "down")
             {
                 rb.GetComponent<Animator>().SetTrigger("down1");
@@ -80,7 +76,7 @@ public class stick_uc : MonoBehaviour
                 rb.GetComponent<Animator>().SetTrigger("up1");
                 boyAnim.SetTrigger("jump");
             }
-        }
+        
         //oyuncunun zıplaması için çarptığı nokta ile oyuncunun konumu çıkar yönü al kuvvet uygula
 
         Vector2 test = new Vector2((float)hitPoint.x - (float)rb.transform.position.x, (float)hitPoint.y - (float)rb.transform.position.y);
@@ -105,7 +101,7 @@ public class stick_uc : MonoBehaviour
                 return;
             }
             rb.velocity = rb.velocity * sonVelo;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.2f);
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             if (SceneManager.GetActiveScene().buildIndex == 18)
             {
                 rb.AddForce(new Vector2(-(float)test.x, (float)test.y) * -1 * jumpForce);
