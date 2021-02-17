@@ -579,6 +579,7 @@ MonoBehaviour:
   vucut: {fileID: 647631076}
   yAxisVeloLimit: 0
   deathCount: 0
+  target: 30
 --- !u!212 &260543828
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2687,7 +2688,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -2754,10 +2755,14 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: cbdc77d620bf5a148b281675effb625b, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 5
     m_Data: {fileID: 4451806321468291538, guid: 11aeee337e4d5ce4f84d3996e73c89b1,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 5
     m_Data:
@@ -2783,8 +2788,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -2, y: -4, z: 0}
-  m_Size: {x: 42, y: 4, z: 1}
+  m_Origin: {x: -46, y: -30, z: 0}
+  m_Size: {x: 86, y: 30, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
